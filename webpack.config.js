@@ -85,4 +85,10 @@ Encore
     //.autoProvidejQuery()
 ;
 
-module.exports = Encore.getWebpackConfig();
+const fullConfig = Encore.getWebpackConfig();
+fullConfig.devServer = {
+    watchFiles: {
+        paths: ['templates/**/*.html.twig'],
+    },
+};
+module.exports = fullConfig;

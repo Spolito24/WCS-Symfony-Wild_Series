@@ -11,8 +11,4 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
-import logoPath from './/images/logo.png';
-
-let logo = `<img src="${logoPath}" alt="ACME logo">`;
-
 console.log('Hello Webpack Encore !')
