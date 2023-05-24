@@ -11,14 +11,17 @@
             {{program.id}} / {{program.title}} :<br>
             {{program.synopsis}}
         </li>
-        <a href="{{ path('program_show', { id: program.id }) }}">
-            Voir le programme
-        </a>
+        <button class="btn btn-primary">
+            <a class="text-secondary" href="{{ path('program_show', { id: program.id }) }}">
+                Voir le programme
+            </a>
+        </button>
         {% endfor %}
     </ul>
 </div>
-
-<a href="{{ path('category_index') }}">
-    Retour à la liste des programmes
-</a>
+<button class="btn btn-secondary">
+    <a href="{{ path('category_index') }}">
+        Retour à la liste des programmes
+    </a>
+</button>
 {% endblock body %}

@@ -7,7 +7,10 @@
 {% for category in categories %}
 <div>
     <h2>{{ loop.index }} / {{ category.name }} </h2>
-    <a href="{{ path('category_show', { categoryName: category.name }) }}">Voir la catégorie</a>
+    <button class="btn btn-primary">
+        <a class="text-secondary" href="{{ path('category_show', { categoryName: category.name }) }}">Voir la
+            catégorie</a>
+    </button>
 </div>
 {% else %}
 Aucune catégorie trouvée.
