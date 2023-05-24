@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{program.title}} Saison #{{ season.number }}{% endblock title %}
+{% block title %}{{season.program.title}} Saison #{{ season.number }}{% endblock title %}
 
 {% block body %}
-<h1>Saison {{season.number}} de {{program.title}} </h1>
+<h1>Saison {{season.number}} de {{season.program.title}} </h1>
 <p>Année de sortie : {{season.year}}</p>
 <p>{{season.description}}</p>
 
