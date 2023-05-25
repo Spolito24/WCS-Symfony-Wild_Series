@@ -3,21 +3,27 @@
 {% block title %}All programs{% endblock %}
 
 {% block body %}
-<h1>>Toutes les séries de la table program : </h1>
-{% for program in programs %}
-<div>
-    <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
-    <p>{{ program.synopsis }}</p>
-    <button class="btn btn-primary">
-        <a class="text-secondary" href="{{ path('program_show', { id: program.id }) }}">Voir la fiche</a>
-    </button>
+<h1 class="text-center m-3">Liste des séries : </h1>
+<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 m-3">
+    {% for program in programs %}
+    <div class="col">
+        <div class="card bg-primary text-secondary">
+            <h2 class="text-center my-2">{{program.title}}</h2>
+            <hr class="mx-5">
+            <p class="mx-2">Synopsis : {{program.synopsis}}</p>
+            <p class="mx-2">Pays D'origine : {{program.country}}</p>
+            <p class="mx-2">Année de sortie : {{program.year}}</p>
+            <div class="d-flex justify-content-center mb-2">
+                <a href="{{ path('program_show', { id: program.id }) }}">
+                    <button class="btn btn-secondary">
+                        Voir la fiche
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    Aucune série trouvée.
+    {% endfor %}
 </div>
-{% else %}
-Aucune série trouvée.
-{% endfor %}
-<button class="btn btn-secondary">
-    <a href="{{ path('app_index') }}">
-        Retour à l'accueil
-    </a>
-</button>
 {% endblock %}

@@ -4,8 +4,10 @@
 {% endblock title %}
 
 {% block body %}
-<h1>Série : {{episode.season.program.title}} </h1>
-<p>Saison : {{episode.season.number}}</p>
-<p>Episode : {{episode.number}} - {{episode.title}}</p>
-<p>Synopsis : {{episode.synopsis}} </p>
+<div class="text-center">
+    <h1>Série : {{episode.season.program.title}} </h1>
+    <p>Saison : {{episode.season.number}}</p>
+    <p>Episode : {{episode.number}} - {{episode.title}}</p>
+    <p>Synopsis : {{episode.synopsis}} </p>
+</div>
 {% endblock body %}

@@ -3,16 +3,22 @@
 {% block title %}{{season.program.title}} Saison #{{ season.number }}{% endblock title %}
 
 {% block body %}
-<h1>Saison {{season.number}} de {{season.program.title}} </h1>
-<p>Année de sortie : {{season.year}}</p>
-<p>{{season.description}}</p>
+<div class="text-center">
+    <h1 class="m-3">Saison {{season.number}} de {{season.program.title}} </h1>
+    <p>Description :<br>{{season.description}}</p>
+    <p>Année de sortie : {{season.year}}</p>
+</div>
 
-<p>Liste des épisodes</p>
-<ul>
-    {% for episode in season.episodes %}
-    <li>Episode {{episode.number}} : <a
-            href="{{ path('program_episode_show', { program: season.program.id , season: season.id , episode: episode.id})}}">{{episode.title}}</a>
-    </li>
-    {% endfor %}
-</ul>
+<div class="card bg-primary text-secondary w-25 m-2">
+    <h3 class="text-center my-2">Liste des épisodes</h3>
+    <ul>
+        {% for episode in season.episodes %}
+        <li>Episode {{episode.number}} :
+            <a class="text-secondary"
+                href="{{ path('program_episode_show', { program: season.program.id , season: season.id , episode: episode.id})}}">
+                {{episode.title}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock body %}

@@ -3,21 +3,28 @@
 {% block title %}Categorie #{{ category.id }}{% endblock title %}
 
 {% block body %}
-<div>
-    <h1 class="mt-0">{{ category.name }}</h1>
-    <ul>
-        {% for program in programs %}
-        <li>
-            {{program.id}} / {{program.title}} :<br>
-            {{program.synopsis}}
-        </li>
-        <button class="btn btn-primary">
-            <a class="text-secondary" href="{{ path('program_show', { id: program.id }) }}">
-                Voir le programme
-            </a>
-        </button>
-        {% endfor %}
-    </ul>
+<h1 class="text-center m-3">Liste des séries : </h1>
+<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 m-3">
+    {% for program in programs %}
+    <div class="col">
+        <div class="card bg-primary text-secondary">
+            <h2 class="text-center my-2">{{program.title}}</h2>
+            <hr class="mx-5">
+            <p class="mx-2">Synopsis : {{program.synopsis}}</p>
+            <p class="mx-2">Pays D'origine : {{program.country}}</p>
+            <p class="mx-2">Année de sortie : {{program.year}}</p>
+            <div class="d-flex justify-content-center mb-2">
+                <a href="{{ path('program_show', { id: program.id }) }}">
+                    <button class="btn btn-secondary">
+                        Voir la fiche
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    Aucune série trouvée.
+    {% endfor %}
 </div>
 <button class="btn btn-secondary">
     <a href="{{ path('category_index') }}">

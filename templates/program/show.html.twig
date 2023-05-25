@@ -1,28 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Série #{{ program.id }}{% endblock title %}
+{% block title %}{{program.title}}{% endblock title %}
 
 {% block body %}
-<div class="media">
-    <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{program.title}} poster">
-    <div class="media-body">
-        <h1 class="mt-0">{{ program.title }}</h1>
-        <p>{{ program.synopsis }}</p>
-        <p>Catégorie : {{ program.category.name }}</p>
-        <p>Année de sortie : {{ program.year }}</p>
-        <p>Pays d'origine {{ program.country }}</p>
-        <p>Liste des saisons</p>
-        <ul>
-            {% for season in program.seasons %}
-            <li><a href="{{ path('program_season_show', { program: program.id , season: season.id})}}">Saison
-                    {{season.number}}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
+<div class="text-center">
+    <h1 class="">{{ program.title }}</h1>
+    <p class="my-2">Synopsis : <br>{{ program.synopsis }}</p>
+    <p>Catégorie : {{ program.category.name }}</p>
+    <p>Année de sortie : {{ program.year }}</p>
+    <p>Pays d'origine : {{ program.country }}</p>
 </div>
-<button class="btn btn-secondary">
-    <a href="{{ path('program_index') }}">
-        Retour à la liste des programmes
-    </a>
-</button>
+<div class="card bg-primary text-secondary w-25 m-2">
+    <h3 class="text-center my-2">Liste des saisons</h3>
+    <ul>
+        {% for season in program.seasons %}
+        <li>
+            <a class="text-secondary"
+                href="{{ path('program_season_show', { program: program.id , season: season.id})}}">
+                Saison {{season.number}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock body %}
