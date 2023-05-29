@@ -25,4 +25,16 @@
         </ul>
     </div>
 </div>
+<div class="d-flex justify-content-center">
+    <div class="card bg-primary text-secondary text-center m-2 w-50">
+        <h3 class="my-2">Liste des acteurs</h3>
+        <ul>
+            {% for actor in program.actors %}
+            <a class="text-secondary" href="{{ path('actor_show', { id: actor.id})}}">
+                <li>{{ actor.firstName }} {{ actor.lastName }}</li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock body %}
