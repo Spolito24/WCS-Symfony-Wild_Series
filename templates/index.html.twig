@@ -7,7 +7,65 @@ Wild Series
 {% block body %}
 
 <body>
-    <h1 class="text-center m-3">{{ website }} Bienvenue !</h1>
-    <img class="center" src="{{ asset('build/images/logo.png') }}" alt="">
+    <h1 class="text-center m-3">Bienvenue sur {{ website }} !</h1>
+    <div class="d-flex justify-content-center flex-wrap">
+        <img class="text-center" src="{{ asset('build/images/logo.png') }}" alt="">
+    </div>
+    <div class="d-flex justify-content-center flex-wrap">
+        <div class="col-5">
+            <div class="m-2 card bg-primary text-secondary">
+                <h2 class="text-center my-2">Catégories </h2>
+                <div class="d-flex justify-content-center mb-2">
+                    <a href="{{ path('category_index')}}">
+                        <button class="btn">
+                            Voir les catégories
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="m-2 card bg-primary text-secondary">
+                <h2 class="text-center my-2">Séries </h2>
+                <div class="d-flex justify-content-center mb-2">
+                    <a href="{{ path('program_index')}}">
+                        <button class="btn">
+                            Voir les Séries
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center m-4">
+        <div class="d-flex justify-content-center mb-2">
+            <a href="{{ path('program_new') }}">
+                <button class="btn btn-secondary">
+                    Ajouter une série
+                </button>
+            </a>
+        </div>
+        <div class="d-flex justify-content-center mb-2">
+            <a href="{{ path('category_new') }}">
+                <button class="btn btn-secondary">
+                    Ajouter une catégorie
+                </button>
+            </a>
+        </div>
+        <div class="d-flex justify-content-center mb-2">
+            <a href="{{ path('app_season_index') }}">
+                <button class="btn btn-secondary">
+                    liste des saisons
+                </button>
+            </a>
+        </div>
+        <div class="d-flex justify-content-center mb-2">
+            <a href="{{ path('app_episode_index') }}">
+                <button class="btn btn-secondary">
+                    liste des épisodes
+                </button>
+            </a>
+        </div>
+    </div>
 </body>
 {% endblock body %}

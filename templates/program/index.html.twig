@@ -4,6 +4,7 @@
 
 {% block body %}
 <h1 class="text-center m-3">Liste des séries : </h1>
+<h2>{{app.session.get('total')}}</h2>
 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 m-3">
     {% for program in programs %}
     <div class="col">

@@ -10,17 +10,19 @@
     <p>Année de sortie : {{ program.year }}</p>
     <p>Pays d'origine : {{ program.country }}</p>
 </div>
-<div class="card bg-primary text-secondary w-25 m-2">
-    <h3 class="text-center my-2">Liste des saisons</h3>
-    <ul>
-        {% for season in program.seasons %}
-        <li>
-            <a class="text-secondary"
-                href="{{ path('program_season_show', { program: program.id , season: season.id})}}">
-                Saison {{season.number}}
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
+<div class="d-flex justify-content-center">
+    <div class="card bg-primary text-secondary text-center m-2 w-50">
+        <h3 class="my-2">Liste des saisons</h3>
+        <ul>
+            {% for season in program.seasons %}
+            <li>
+                <a class="text-secondary"
+                    href="{{ path('program_season_show', { program: program.id , season: season.id})}}">Saison
+                    {{season.number}}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endblock body %}

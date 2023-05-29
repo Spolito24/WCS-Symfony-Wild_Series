@@ -1,4 +1,8 @@
-{{ form_start(form) }}
+<div class="m-5">
+    {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+    <div class="text-center">
+        <button class="btn">{{ button_label|default('Save') }}</button>
+    </div>
+    {{ form_end(form) }}
+</div>

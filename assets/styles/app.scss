@@ -7,6 +7,11 @@ body {
     color: #262A56;
 }
 
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
 .card {
     border: 0.3rem solid;
     border-color: $secondary;
@@ -21,6 +26,7 @@ hr {
     border-radius: 5rem;
     border-color: $orange;
     border-width: 0.15rem;
+    background-color: $secondary;
 }
 
 .btn:hover {
