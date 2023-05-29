@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Actor;
 use App\Entity\Category;
 use App\Entity\Program;
 use COM;
@@ -25,6 +26,13 @@ class ProgramType extends AbstractType
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name'
+            ])
+            ->add('actors', EntityType::class, [
+                'class' => Actor::class,
+                'choice_label' => 'firstAndLastName',
+                'multiple' => true,
+                'expanded' => true,
+                'by_reference' => false,
             ]);
     }
 
