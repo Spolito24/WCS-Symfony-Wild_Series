@@ -15,7 +15,7 @@
             {% for episode in season.episodes %}
             <li>Episode {{episode.number}} :
                 <a class="text-secondary"
-                    href="{{ path('program_episode_show', { program: season.program.id , season: season.id , episode: episode.id})}}">
+                    href="{{ path('program_episode_show', { programName: season.program.slug , season: season.id , episodeName: episode.slug})}}">
                     {{episode.title}}</a>
             </li>
             {% endfor %}

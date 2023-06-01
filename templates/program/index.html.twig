@@ -15,7 +15,7 @@
             <p class="mx-2">Pays D'origine : {{program.country}}</p>
             <p class="mx-2">Année de sortie : {{program.year}}</p>
             <div class="d-flex justify-content-center mb-2">
-                <a href="{{ path('program_show', { id: program.id }) }}">
+                <a href="{{ path('program_show', { slug: program.slug }) }}">
                     <button class="btn btn-secondary">
                         Voir la fiche
                     </button>

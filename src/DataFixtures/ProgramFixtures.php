@@ -6,9 +6,18 @@ use App\Entity\Program;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
+    private SluggerInterface $slugger;
+
+    public function __construct(SluggerInterface $slugger)
+    {
+        $this->slugger = $slugger;
+    }
+
+
     const PROGRAM = [
         ["title" => "Breaking Bad", "synopsis" => "Un prof de chimie ce décide à fabriquer de la meth", "category" => "Action", "country" => "USA", "year" => "2008"],
         ["title" => "One Piece", "synopsis" => "Un jeune pirate cherche le plus grand des trésors afin de devenir le roi des pirates", "category" => "Aventure", "country" => "Japon", "year" => "1999"],
@@ -21,6 +30,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
         foreach (self::PROGRAM as $programData) {
             $program = new Program();
             $program->setTitle($programData['title']);
+            $slug = $this->slugger->slug($programData['title']);
+            $program->setSlug($slug);
             $program->setSynopsis($programData['synopsis']);
             $program->setCountry($programData['country']);
             $program->setYear($programData['year']);

@@ -19,6 +19,7 @@ class ProgramType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
+            ->add('slug', TextType::class)
             ->add('synopsis', TextType::class)
             ->add('poster', TextType::class)
             ->add('country', TextType::class)

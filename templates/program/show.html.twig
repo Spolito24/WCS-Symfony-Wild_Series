@@ -17,7 +17,7 @@
             {% for season in program.seasons %}
             <li>
                 <a class="text-secondary"
-                    href="{{ path('program_season_show', { program: program.id , season: season.id})}}">Saison
+                    href="{{ path('program_season_show', { slug: program.slug , season: season.id})}}">Saison
                     {{season.number}}
                 </a>
             </li>
