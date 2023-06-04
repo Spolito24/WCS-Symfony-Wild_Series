@@ -19,6 +19,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 #[Route('/program', name: 'program_')]
 class ProgramController extends AbstractController
@@ -39,7 +41,7 @@ class ProgramController extends AbstractController
     }
 
     #[Route('/new', name: 'new')]
-    public function new(Request $request, ProgramRepository $programRepository, SluggerInterface $slugger): Response
+    public function new(Request $request, ProgramRepository $programRepository, MailerInterface $mailer): Response
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
@@ -47,8 +49,13 @@ class ProgramController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $programRepository->save($program, true);
-
             $this->addFlash('success', 'The new program has been created');
+
+            $email = (new Email())
+                ->from($this->getParameter('mailer_from'))
+                ->to('baptisterenier.pro@gmail.com')
+                ->subject('j\'ai réussi')
+                ->html('Super Email je trouve');
 
             return $this->redirectToRoute('program_index');
         }
