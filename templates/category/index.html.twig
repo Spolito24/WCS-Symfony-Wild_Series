@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All categories{% endblock %}
+
+{% block body %}
+<h1 class="text-center m-3">Toutes les catégories : </h1>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 m-3">
+    {% for category in categories %}
+    <div class="col">
+        <div class="card bg-primary text-secondary">
+            <h2 class="text-center my-2">{{ loop.index }} / {{ category.name }} </h2>
+            <div class="d-flex justify-content-center mb-2">
+                <a href="{{ path('category_show', { categoryName: category.name }) }}">
+                    <button class="btn btn-secondary">
+                        Voir la catégorie
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    Aucune catégorie trouvée.
+    {% endfor %}
+</div>
+<div class="d-flex justify-content-center mb-2">
+    <a href="{{ path('category_new') }}">
+        <button class="btn btn-secondary">
+            Ajouter une catégorie
+        </button>
+    </a>
+</div>
+{% endblock %}

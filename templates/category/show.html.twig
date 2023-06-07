@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All programs{% endblock %}
+{% block title %}Categorie #{{ category.id }}{% endblock title %}
 
 {% block body %}
 <h1 class="text-center m-3">Liste des séries : </h1>
-<h2>{{app.session.get('total')}}</h2>
 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 m-3">
     {% for program in programs %}
     <div class="col">
@@ -15,7 +14,7 @@
             <p class="mx-2">Pays D'origine : {{program.country}}</p>
             <p class="mx-2">Année de sortie : {{program.year}}</p>
             <div class="d-flex justify-content-center mb-2">
-                <a href="{{ path('program_show', { slug: program.slug }) }}">
+                <a href="{{ path('program_show', { id: program.id }) }}">
                     <button class="btn btn-secondary">
                         Voir la fiche
                     </button>
@@ -27,11 +26,4 @@
     Aucune série trouvée.
     {% endfor %}
 </div>
-<div class="d-flex justify-content-center mb-2">
-    <a href="{{ path('program_new') }}">
-        <button class="btn btn-secondary">
-            Ajouter une série
-        </button>
-    </a>
-</div>
-{% endblock %}
+{% endblock body %}
